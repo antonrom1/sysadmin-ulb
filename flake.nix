@@ -40,6 +40,7 @@
                                 extraSpecialArgs = { inherit inputs; };
                                 # Home manager config (configures programs like firefox, zsh, eww, etc)
                                 users.anton = ./home-anton/default.nix;
+                                users.darny = ./home-darny/default.nix;
                             };
                         }
                     ];
