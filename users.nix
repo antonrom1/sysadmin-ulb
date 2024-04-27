@@ -35,6 +35,15 @@
         "${builtins.readFile ./home-sorio/ssh.pub}"
       ];
     };
+    boulanger = {
+      isNormalUser = true;
+      uid = 1003;
+      shell = pkgs.zsh;
+      extraGroups = [ "wheel" "systemd-journal" ];
+      openssh.authorizedKeys.keys = [
+        "${builtins.readFile ./home-boulanger/ssh.pub}"
+      ];
+    };
     root.packages = with pkgs; [ git vim ];
     root.openssh.authorizedKeys.keys = [
       "${builtins.readFile ./home-anton/ssh.pub}"
