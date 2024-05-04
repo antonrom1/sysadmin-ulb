@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./users.nix
+      ./grafana.nix
       #./home-anton/default.nix
     ];
 
@@ -62,7 +63,7 @@
  #  packages = with pkgs; [];
  #};
 
-# nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
