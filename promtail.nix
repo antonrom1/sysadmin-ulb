@@ -35,28 +35,20 @@
               source_labels = ["'__journal__hostname'"];
               target_label = "host";
             }
-            {
-              source_labels = ["'__journal_container_name'"];
-              target_label = "container_name";
-            }
           ];
         }
         {
-          job_name = "syslog";
+          job_name = "openwrt-syslog";
           syslog = {
-            listen_address = "127.0.0.1:1514";
+            listen_address = "0.0.0.0:1514";
             labels = {
-              job = "syslog";
+              job = "openwrt-syslog";
             };
           };
           relabel_configs = [
             {
               source_labels = ["'__syslog_message_hostname'"];
               target_label = "host";
-            }
-            {
-              source_labels = ["'__syslog_message_hostname'"];
-              target_label = "hostname";
             }
             {
               source_labels = ["'__syslog_message_severity'"];
@@ -69,10 +61,6 @@
             {
               source_labels = ["'__syslog_message_facility'"];
               target_label = "facility";
-            }
-            {
-              source_labels = ["'__syslog_connection_hostname'"];
-              target_label = "connection_hostname";
             }
           ];
         }
