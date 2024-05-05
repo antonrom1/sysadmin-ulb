@@ -44,7 +44,6 @@
         {
           job_name = "syslog";
           syslog = {
-            json = false;
             listen_address = "127.0.0.1:1514";
             labels = {
               job = "syslog";
