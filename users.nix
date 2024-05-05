@@ -47,6 +47,7 @@
     root.packages = with pkgs; [ git vim ];
     root.openssh.authorizedKeys.keys = [
       "${builtins.readFile ./home-anton/ssh.pub}"
+      "${builtins.readFile ./home-darny/ssh.pub}"
     ];
   };
 }
