@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
       ./users.nix
       ./grafana.nix
+      ./loki.nix
+      ./promtail.nix
       #./home-anton/default.nix
     ];
 
@@ -101,8 +103,14 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 3000 8086 25826 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 
+    3000 # grafana
+    8086 # influxdb
+    3030 # loki
+  ];
+  networking.firewall.allowedUDPPorts = [
+    25826 # collectd
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
