@@ -6,8 +6,8 @@ in
   programs.git = {
     enable = true;
     package = pkgs.git;
-    # userName = "Anton Romanova";
-    # userEmail = "contact@antonromanova.com";
+    userName = "Hakim";
+    userEmail = "kacemhakim19@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
       #commit.gpgSign = true;

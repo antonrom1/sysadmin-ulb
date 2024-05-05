@@ -12,6 +12,7 @@
       ./grafana.nix
       ./loki.nix
       ./promtail.nix
+      ./rsyslog.nix
       #./home-anton/default.nix
     ];
 
@@ -107,9 +108,11 @@
     3000 # grafana
     8086 # influxdb
     3030 # loki
+    514
   ];
   networking.firewall.allowedUDPPorts = [
     25826 # collectd
+    514
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
