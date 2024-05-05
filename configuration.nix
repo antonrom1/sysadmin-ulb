@@ -74,6 +74,7 @@
     vim
     wget
     git
+    influxdb
   ];
   programs.zsh = {
     enable = true;

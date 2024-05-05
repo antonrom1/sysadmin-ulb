@@ -24,6 +24,7 @@
   services.influxdb = {
     enable = true;
     dataDir = "/var/lib/influxdb";
+    package = pkgs.influxdb;
     extraConfig = {
       collectd = [{
         enabled = true;
