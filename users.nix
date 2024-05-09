@@ -46,6 +46,8 @@
     };
     root.packages = with pkgs; [ git vim ];
     root.openssh.authorizedKeys.keys = [
+      # these users are allowed to rebuild the machine from remote as doing that requires root ssh access 
+      # nixos-rebuild --target-host root@192.168.11.3 --build-host "root@192.168.11.3" --fast --flake ".#grafix" switch
       "${builtins.readFile ./home-anton/ssh.pub}"
       "${builtins.readFile ./home-darny/ssh.pub}"
     ];

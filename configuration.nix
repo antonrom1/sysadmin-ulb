@@ -6,14 +6,14 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ./users.nix
       ./grafana.nix
       ./loki.nix
       ./promtail.nix
       ./rsyslog.nix
-      #./home-anton/default.nix
+      ./influxdb.nix
     ];
 
   # Bootloader.
@@ -22,11 +22,6 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "grafix"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -58,14 +53,7 @@
   # Configure console keymap
   console.keyMap = "uk";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
- #users.users.anton = {
- #  isNormalUser = true;
- #  description = "Anton";
- #  extraGroups = [ "networkmanager" "wheel" ];
- #  packages = with pkgs; [];
- #};
-
+  # nix extra options
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allow unfree packages
@@ -77,7 +65,7 @@
     vim
     wget
     git
-    influxdb
+    influxdb  # influx in PATH so we can debug it
   ];
   programs.zsh = {
     enable = true;
@@ -108,11 +96,11 @@
     3000 # grafana
     8086 # influxdb
     3030 # loki
-    514
+    514  # rsyslog, probably communicates through UDP, so we need to remove this line
   ];
   networking.firewall.allowedUDPPorts = [
     25826 # collectd
-    514
+    514   # rsyslog
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
